@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://serviciosWebSms2.efibus.com.ar/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://serviciosWebSms2.efibus.com.ar/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://serviciosWebSms2.efibus.com.ar/">
+      <s:element name="RecuperarHorarioProgramadoPorParada">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gatewayId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="source" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mensajeUsuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carrier" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applidId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="codigoEmpresa" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarHorarioProgramadoPorParadaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecuperarHorarioProgramadoPorParadaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarHorarioProximoPorParada">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="identificadorParada" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarHorarioProximoPorParadaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecuperarHorarioProximoPorParadaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarHorarioParadaInteligenteAndroi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="identificadorParada" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarHorarioParadaInteligenteAndroiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecuperarHorarioParadaInteligenteAndroiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarHorarioInspectores">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="identificadorParada" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarHorarioInspectoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecuperarHorarioInspectoresResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarHorarioCuandoLlegaAndroid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="identificadorParada" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcionLinea" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigoLineaGrupo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarHorarioCuandoLlegaAndroidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecuperarHorarioCuandoLlegaAndroidResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarMarkesinaCuandoLlegaAndroidPorUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarMarkesinaCuandoLlegaAndroidPorUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecuperarMarkesinaCuandoLlegaAndroidPorUserIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarVersionDBSQLiteVigenteAndroid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarVersionDBSQLiteVigenteAndroidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecuperarVersionDBSQLiteVigenteAndroidResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RecuperarHorarioProgramadoPorParadaSoapIn">
+    <wsdl:part name="parameters" element="tns:RecuperarHorarioProgramadoPorParada" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarHorarioProgramadoPorParadaSoapOut">
+    <wsdl:part name="parameters" element="tns:RecuperarHorarioProgramadoPorParadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarHorarioProximoPorParadaSoapIn">
+    <wsdl:part name="parameters" element="tns:RecuperarHorarioProximoPorParada" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarHorarioProximoPorParadaSoapOut">
+    <wsdl:part name="parameters" element="tns:RecuperarHorarioProximoPorParadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarHorarioParadaInteligenteAndroiSoapIn">
+    <wsdl:part name="parameters" element="tns:RecuperarHorarioParadaInteligenteAndroi" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarHorarioParadaInteligenteAndroiSoapOut">
+    <wsdl:part name="parameters" element="tns:RecuperarHorarioParadaInteligenteAndroiResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarHorarioInspectoresSoapIn">
+    <wsdl:part name="parameters" element="tns:RecuperarHorarioInspectores" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarHorarioInspectoresSoapOut">
+    <wsdl:part name="parameters" element="tns:RecuperarHorarioInspectoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarHorarioCuandoLlegaAndroidSoapIn">
+    <wsdl:part name="parameters" element="tns:RecuperarHorarioCuandoLlegaAndroid" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarHorarioCuandoLlegaAndroidSoapOut">
+    <wsdl:part name="parameters" element="tns:RecuperarHorarioCuandoLlegaAndroidResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarMarkesinaCuandoLlegaAndroidPorUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:RecuperarMarkesinaCuandoLlegaAndroidPorUserId" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarMarkesinaCuandoLlegaAndroidPorUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:RecuperarMarkesinaCuandoLlegaAndroidPorUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarVersionDBSQLiteVigenteAndroidSoapIn">
+    <wsdl:part name="parameters" element="tns:RecuperarVersionDBSQLiteVigenteAndroid" />
+  </wsdl:message>
+  <wsdl:message name="RecuperarVersionDBSQLiteVigenteAndroidSoapOut">
+    <wsdl:part name="parameters" element="tns:RecuperarVersionDBSQLiteVigenteAndroidResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioWebHorariosProximosSoap">
+    <wsdl:operation name="RecuperarHorarioProgramadoPorParada">
+      <wsdl:input message="tns:RecuperarHorarioProgramadoPorParadaSoapIn" />
+      <wsdl:output message="tns:RecuperarHorarioProgramadoPorParadaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioProximoPorParada">
+      <wsdl:input message="tns:RecuperarHorarioProximoPorParadaSoapIn" />
+      <wsdl:output message="tns:RecuperarHorarioProximoPorParadaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioParadaInteligenteAndroi">
+      <wsdl:input message="tns:RecuperarHorarioParadaInteligenteAndroiSoapIn" />
+      <wsdl:output message="tns:RecuperarHorarioParadaInteligenteAndroiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioInspectores">
+      <wsdl:input message="tns:RecuperarHorarioInspectoresSoapIn" />
+      <wsdl:output message="tns:RecuperarHorarioInspectoresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioCuandoLlegaAndroid">
+      <wsdl:input message="tns:RecuperarHorarioCuandoLlegaAndroidSoapIn" />
+      <wsdl:output message="tns:RecuperarHorarioCuandoLlegaAndroidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarMarkesinaCuandoLlegaAndroidPorUserId">
+      <wsdl:input message="tns:RecuperarMarkesinaCuandoLlegaAndroidPorUserIdSoapIn" />
+      <wsdl:output message="tns:RecuperarMarkesinaCuandoLlegaAndroidPorUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarVersionDBSQLiteVigenteAndroid">
+      <wsdl:input message="tns:RecuperarVersionDBSQLiteVigenteAndroidSoapIn" />
+      <wsdl:output message="tns:RecuperarVersionDBSQLiteVigenteAndroidSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioWebHorariosProximosSoap" type="tns:ServicioWebHorariosProximosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RecuperarHorarioProgramadoPorParada">
+      <soap:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarHorarioProgramadoPorParada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioProximoPorParada">
+      <soap:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarHorarioProximoPorParada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioParadaInteligenteAndroi">
+      <soap:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarHorarioParadaInteligenteAndroi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioInspectores">
+      <soap:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarHorarioInspectores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioCuandoLlegaAndroid">
+      <soap:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarHorarioCuandoLlegaAndroid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarMarkesinaCuandoLlegaAndroidPorUserId">
+      <soap:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarMarkesinaCuandoLlegaAndroidPorUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarVersionDBSQLiteVigenteAndroid">
+      <soap:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarVersionDBSQLiteVigenteAndroid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioWebHorariosProximosSoap12" type="tns:ServicioWebHorariosProximosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RecuperarHorarioProgramadoPorParada">
+      <soap12:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarHorarioProgramadoPorParada" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioProximoPorParada">
+      <soap12:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarHorarioProximoPorParada" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioParadaInteligenteAndroi">
+      <soap12:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarHorarioParadaInteligenteAndroi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioInspectores">
+      <soap12:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarHorarioInspectores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarHorarioCuandoLlegaAndroid">
+      <soap12:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarHorarioCuandoLlegaAndroid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarMarkesinaCuandoLlegaAndroidPorUserId">
+      <soap12:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarMarkesinaCuandoLlegaAndroidPorUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarVersionDBSQLiteVigenteAndroid">
+      <soap12:operation soapAction="http://serviciosWebSms2.efibus.com.ar/RecuperarVersionDBSQLiteVigenteAndroid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioWebHorariosProximos">
+    <wsdl:port name="ServicioWebHorariosProximosSoap" binding="tns:ServicioWebHorariosProximosSoap">
+      <soap:address location="http://servicioswebsms2.efibus.com.ar/ServicioWebHorariosProximos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioWebHorariosProximosSoap12" binding="tns:ServicioWebHorariosProximosSoap12">
+      <soap12:address location="http://servicioswebsms2.efibus.com.ar/ServicioWebHorariosProximos.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

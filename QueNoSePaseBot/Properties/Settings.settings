@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="QueNoSePaseBot.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Bot_Application1_ar_com_efibus_servicioswebsms4_ServicioWebHorariosProximos" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://servicioswebsms4.efibus.com.ar/ServicioWebHorariosProximos.asmx</Value>
+    </Setting>
+    <Setting Name="Bot_Application1_ar_com_efibus_servicioswebsms2_ServicioWebHorariosProximos" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://servicioswebsms2.efibus.com.ar/ServicioWebHorariosProximos.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
