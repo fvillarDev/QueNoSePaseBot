@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 using Microsoft.Bot.Connector;
 using QueNoSePase.API;
 using QueNoSePase.API.Models;
@@ -62,12 +63,13 @@ namespace QueNoSePaseBot.BotHelper
                         {
                             if (cercana.Parada == null) continue;
 
-                            var url = index + ",Lineas " + string.Join("-", cercana.Lineas) + "," +
+                            var data = index + ",Lineas " + string.Join("-", cercana.Lineas) + "," +
                                       cercana.Parada.NumeroParada + "," + cercana.Parada.Latitud.Replace(",", ".") + ";" + cercana.Parada.Longitud.Replace(",", ".");
-                            sb.Append(url + "|");
+                            sb.Append(data + "|");
                             index++;
                         }
-                        return baseurl + sb.ToString();
+                        string url = baseurl + sb.ToString();
+                        return HttpUtility.UrlEncode(url);
                     }
                 }
 
