@@ -52,26 +52,33 @@ namespace QueNoSePaseBot
                 if (state == 0)
                 {
                     var newMsg = BotHelper.BotHelper.ParseMessage(activity);
-                    reply = activity.CreateReply();
-                    reply.Attachments = new List<Attachment>();
-                    var actions = new List<CardAction>
+                    if (newMsg.StartsWith("http:"))
                     {
-                        new CardAction
+                        reply = activity.CreateReply();
+                        reply.Attachments = new List<Attachment>();
+                        var actions = new List<CardAction>
                         {
-                            Title = "Ver Paradas Cercanas",
-                            Value = newMsg,
-                            Type = ActionTypes.OpenUrl
-                        }
-                    };
-                    reply.AttachmentLayout = AttachmentLayoutTypes.List;
-                    reply.Attachments.Add(
-                        new HeroCard
-                        {
-                            Title = "Click para ver las Paradas Cercanas",
-                            Images = new List<CardImage>(),
-                            Buttons = actions
-                        }.ToAttachment()
-                    );
+                            new CardAction
+                            {
+                                Title = "Ver Paradas Cercanas",
+                                Value = newMsg,
+                                Type = ActionTypes.OpenUrl
+                            }
+                        };
+                        reply.AttachmentLayout = AttachmentLayoutTypes.List;
+                        reply.Attachments.Add(
+                            new HeroCard
+                            {
+                                Title = "Click para ver las Paradas Cercanas",
+                                Images = new List<CardImage>(),
+                                Buttons = actions
+                            }.ToAttachment()
+                            );
+                    }
+                    else
+                    {
+                        reply = activity.CreateReply(newMsg);
+                    }
                 }
 
                 await connector.Conversations.ReplyToActivityAsync(reply);
