@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Bot.Connector;
+using QueNoSePase.API;
+using QueNoSePase.API.Models;
 
 namespace QueNoSePaseBot.BotHelper
 {
@@ -31,6 +34,41 @@ namespace QueNoSePaseBot.BotHelper
                     sb.AppendLine("Ejemplo:");
                     sb.AppendLine("  C1324");
                     return sb.ToString();
+                }
+
+                if (msgLower.StartsWith("parada") || msgLower.StartsWith("cercana"))
+                {
+                    var splitted = msgLower.Split(':');
+                    if (splitted.Length > 1)
+                    {
+                        string posicion = splitted[1].TrimStart().TrimEnd().Trim();
+                        var pos = posicion.Split(',');
+                        var parameters = new NameValueCollection
+                           {
+                               { "funcion", "paradasCercanas" },
+                               { "userId", Constants.USER_ID },
+                               { "uWeb", Constants.USUARIO },
+                               { "cWeb", Constants.CLAVE },
+                               { "latitud", pos[0].Replace(".", ",") },
+                               { "longitud", pos[1].Replace(".", ",") }
+                           };
+                        var res = Helper.HttpPost(parameters);
+                        var paradas = Helper.ParseParadasCercanasAspx(res);
+
+                        int index = 0;
+                        StringBuilder sb = new StringBuilder();
+                        string baseurl = "http://map.quenosepase.com.ar?user=" + pos[0] + ";" + pos[1] + (paradas.Count > 0 ? "&paradas=" : "");
+                        foreach (ParadaCercana cercana in paradas)
+                        {
+                            if (cercana.Parada == null) continue;
+
+                            var url = index + ",Lineas " + string.Join("-", cercana.Lineas) + "," +
+                                      cercana.Parada.NumeroParada + "," + cercana.Parada.Latitud.Replace(",", ".") + ";" + cercana.Parada.Longitud.Replace(",", ".");
+                            sb.Append(url + "|");
+                            index++;
+                        }
+                        return baseurl + sb.ToString();
+                    }
                 }
 
                 // buscar parada

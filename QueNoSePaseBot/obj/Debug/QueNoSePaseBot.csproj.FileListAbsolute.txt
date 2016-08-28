@@ -36,3 +36,6 @@ D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\ru\Microso
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.dll
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.pdb
+D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.csprojResolveAssemblyReference.cache
+D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePase.API.dll
+D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePase.API.pdb
