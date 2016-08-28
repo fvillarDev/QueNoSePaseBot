@@ -68,8 +68,8 @@ namespace QueNoSePaseBot.BotHelper
                             sb.Append(data + "|");
                             index++;
                         }
-                        string url = baseurl + sb.ToString();
-                        return "[Ver Paradas Cercanas](" + url + ")";
+                        return baseurl + sb.ToString();
+                        //return "[Ver Paradas Cercanas](" + url + ")";
                     }
                 }
 

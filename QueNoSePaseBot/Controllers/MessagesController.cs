@@ -52,7 +52,26 @@ namespace QueNoSePaseBot
                 if (state == 0)
                 {
                     var newMsg = BotHelper.BotHelper.ParseMessage(activity);
-                    reply = activity.CreateReply(newMsg);
+                    reply = activity.CreateReply();
+                    reply.Attachments = new List<Attachment>();
+                    var actions = new List<CardAction>
+                    {
+                        new CardAction
+                        {
+                            Title = "Ver Paradas Cercanas",
+                            Value = newMsg,
+                            Type = ActionTypes.OpenUrl
+                        }
+                    };
+                    reply.AttachmentLayout = AttachmentLayoutTypes.List;
+                    reply.Attachments.Add(
+                        new HeroCard
+                        {
+                            Title = "Click para ver las Paradas Cercanas",
+                            Images = new List<CardImage>(),
+                            Buttons = actions
+                        }.ToAttachment()
+                    );
                 }
 
                 await connector.Conversations.ReplyToActivityAsync(reply);
