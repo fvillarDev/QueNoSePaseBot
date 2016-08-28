@@ -1,6 +1,6 @@
-D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\Bot Application1.dll.config
-D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\Bot Application1.dll
-D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\Bot Application1.pdb
+D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePaseBot.dll.config
+D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePaseBot.dll
+D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePaseBot.pdb
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\Autofac.dll
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\Chronic.dll
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.Bot.Builder.dll
@@ -34,5 +34,5 @@ D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\fr\Microso
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\ja\Microsoft.Bot.Builder.resources.dll
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\ru\Microsoft.Bot.Builder.resources.dll
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
-D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\Bot Application1.dll
-D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\Bot Application1.pdb
+D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.dll
+D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.pdb
