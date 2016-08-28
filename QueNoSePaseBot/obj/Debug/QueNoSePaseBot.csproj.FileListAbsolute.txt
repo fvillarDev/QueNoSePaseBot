@@ -38,4 +38,3 @@ D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueN
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.pdb
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.csprojResolveAssemblyReference.cache
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePase.API.dll
-D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePase.API.pdb
