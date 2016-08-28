@@ -69,7 +69,7 @@ namespace QueNoSePaseBot.BotHelper
                             index++;
                         }
                         string url = baseurl + sb.ToString();
-                        return HttpUtility.UrlEncode(url);
+                        return "[Ver Paradas Cercanas](" + url + ")";
                     }
                 }
 
