@@ -66,14 +66,27 @@ namespace QueNoSePaseBot
                             }
                         };
                         reply.AttachmentLayout = AttachmentLayoutTypes.List;
-                        reply.Attachments.Add(
-                            new HeroCard
+                        reply.Attachments.Add(new ThumbnailCard
+                        {
+                            Title = "Click para ver las Paradas Cercanas",
+                            Buttons = actions,
+                            Tap = actions[0],
+                            Text = "",
+                            Subtitle = "Ver mapa con las paradas cercanas obtenidas",
+                            Images = new List<CardImage>
                             {
-                                Title = "Click para ver las Paradas Cercanas",
-                                Images = new List<CardImage>(),
-                                Buttons = actions
-                            }.ToAttachment()
-                            );
+                                new CardImage("http://map.quenosepase.com.ar/logo.png")
+                            }
+                        }.ToAttachment()
+                        );
+                        //,
+                        //    new HeroCard
+                        //    {
+                        //        Title = "Click para ver las Paradas Cercanas",
+                        //        Images = new List<CardImage>(),
+                        //        Buttons = actions
+                        //    }.ToAttachment()
+                        //);
                     }
                     else
                     {
