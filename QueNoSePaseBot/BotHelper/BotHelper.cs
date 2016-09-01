@@ -112,6 +112,7 @@ namespace QueNoSePaseBot.BotHelper
             }
             catch (Exception ex)
             {
+                LogHelper.LogAsync(ex, "MessagesController_BotHelper", (message != null ? message.Text : ""), (message != null ? message.From.Name : ""));
                 return "Disculpe, no hemos podido procesar la consulta. Verifique que los datos sean correctos";
             }
         }
