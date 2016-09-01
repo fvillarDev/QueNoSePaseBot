@@ -88,7 +88,7 @@ namespace QueNoSePaseBot.BotHelper
 
                         return "Error";
                     }
-                    else if (splitted.Length > 1)
+                    if (splitted.Length > 1)
                     {
                         var parada = splitted[0];
                         var linea = splitted[1];
@@ -104,7 +104,7 @@ namespace QueNoSePaseBot.BotHelper
                             return "Error";
                         }
 
-                        //return "Parada: " + parada + ", Linea: " + linea;
+                        return "Pronto implementaremos más funciones. Disculpe las molestias.";
                     }
                     return "Disculpe, faltan datos para poder realizar su consulta.";
                 }
@@ -112,7 +112,7 @@ namespace QueNoSePaseBot.BotHelper
             }
             catch (Exception ex)
             {
-                return "Disculpe, no hemos podido procesar su consulta. Verifique que los datos sean correctos";
+                return "Disculpe, no hemos podido procesar la consulta. Verifique que los datos sean correctos";
             }
         }
     }
@@ -126,7 +126,7 @@ namespace QueNoSePaseBot.BotHelper
         private static int PROVINCIA = 17;
         private static int CIUDAD = 20;
 
-        public static string GetHorarioTodos(string parada)
+        public static string GetHorarioTodos(string parada, bool useDebug = false)
         {
             try
             {
@@ -135,6 +135,9 @@ namespace QueNoSePaseBot.BotHelper
                 var lista = new List<Horario>();
                 if (res.StartsWith("0|"))
                 {
+                    if (res.Contains("Sin datos"))
+                        return "*No se encontraron horarios para esta parada*";
+
                     var resAux = res.Split('|');
                     if (resAux.Length < 2) return null;
 
@@ -181,6 +184,8 @@ namespace QueNoSePaseBot.BotHelper
             }
             catch (Exception ex)
             {
+                if(useDebug)
+                    return ex.Message;
                 return null;
             }
         }
