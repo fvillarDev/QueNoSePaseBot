@@ -32,7 +32,7 @@ namespace QueNoSePaseBot
                             "Disculpe, no hemos podido procesar su consulta. Verifique que los datos sean correctos");
                     int state = 0;
 
-                    if (activity.Attachments.Count > 0)
+                    if (activity.Attachments != null && activity.Attachments.Count > 0)
                     {
                         reply = activity.CreateReply("Disculpe, sólo se aceptan mensajes de texto");
                         state = 1;
