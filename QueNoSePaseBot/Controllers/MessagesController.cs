@@ -9,6 +9,7 @@ using System.Web.Http.Description;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
+using QueNoSePaseBot.BotHelper;
 
 namespace QueNoSePaseBot
 {
@@ -23,78 +24,87 @@ namespace QueNoSePaseBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
-                Activity reply = activity.CreateReply("Disculpe, no hemos podido procesar su consulta. Verifique que los datos sean correctos");
-                int state = 0;
-
-                if (activity.Attachments.Count > 0)
+                try
                 {
-                    reply = activity.CreateReply("Disculpe, sólo se aceptan mensajes de texto");
-                    state = 1;
-                }
+                    ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
+                    Activity reply =
+                        activity.CreateReply(
+                            "Disculpe, no hemos podido procesar su consulta. Verifique que los datos sean correctos");
+                    int state = 0;
 
-                if (string.IsNullOrEmpty(activity.Text) && state == 0)
-                {
-                    //CardAction action = new CardAction
-                    //{
-                    //    Type = "openUrl",
-                    //    Title = "Ver Paradas Cercanas",
-                    //    Value = "http://map.quenosepase.com.ar/?user=-33.5650168;-64.8363918&paradas=1,Linea%2010,C1234,-31.387147;-64.217691|2,Linea%2022,C4444,-31.384493;-64.200605"
-                    //};
-                    //activity.Attachments.Add(new Attachment
-                    //{
-
-                    //});
-                    reply = activity.CreateReply("Ups.. Mensaje vacío!");
-                    state = 2;
-                }
-
-                if (state == 0)
-                {
-                    var newMsg = BotHelper.BotHelper.ParseMessage(activity);
-                    if (newMsg.StartsWith("http:"))
+                    if (activity.Attachments.Count > 0)
                     {
-                        reply = activity.CreateReply();
-                        reply.Attachments = new List<Attachment>();
-                        var actions = new List<CardAction>
-                        {
-                            new CardAction
-                            {
-                                Title = "Ver Paradas Cercanas",
-                                Value = newMsg,
-                                Type = ActionTypes.OpenUrl
-                            }
-                        };
-                        reply.AttachmentLayout = AttachmentLayoutTypes.List;
-                        reply.Attachments.Add(new ThumbnailCard
-                        {
-                            Title = "Click para ver las Paradas Cercanas",
-                            Buttons = actions,
-                            Tap = actions[0],
-                            Text = "",
-                            Subtitle = "Ver mapa con las paradas cercanas obtenidas",
-                            Images = new List<CardImage>
-                            {
-                                new CardImage("http://map.quenosepase.com.ar/logo.png")
-                            }
-                        }.ToAttachment()
-                        );
-                        //,
-                        //    new HeroCard
-                        //    {
-                        //        Title = "Click para ver las Paradas Cercanas",
-                        //        Images = new List<CardImage>(),
-                        //        Buttons = actions
-                        //    }.ToAttachment()
-                        //);
+                        reply = activity.CreateReply("Disculpe, sólo se aceptan mensajes de texto");
+                        state = 1;
                     }
-                    else
-                    {
-                        reply = activity.CreateReply(newMsg);
-                    }
-                }
 
-                await connector.Conversations.ReplyToActivityAsync(reply);
+                    if (string.IsNullOrEmpty(activity.Text) && state == 0)
+                    {
+                        //CardAction action = new CardAction
+                        //{
+                        //    Type = "openUrl",
+                        //    Title = "Ver Paradas Cercanas",
+                        //    Value = "http://map.quenosepase.com.ar/?user=-33.5650168;-64.8363918&paradas=1,Linea%2010,C1234,-31.387147;-64.217691|2,Linea%2022,C4444,-31.384493;-64.200605"
+                        //};
+                        //activity.Attachments.Add(new Attachment
+                        //{
+
+                        //});
+                        reply = activity.CreateReply("Ups.. Mensaje vacío!");
+                        state = 2;
+                    }
+
+                    if (state == 0)
+                    {
+                        var newMsg = BotHelper.BotHelper.ParseMessage(activity);
+                        if (newMsg.StartsWith("http:"))
+                        {
+                            reply = activity.CreateReply();
+                            reply.Attachments = new List<Attachment>();
+                            var actions = new List<CardAction>
+                            {
+                                new CardAction
+                                {
+                                    Title = "Ver Paradas Cercanas",
+                                    Value = newMsg,
+                                    Type = ActionTypes.OpenUrl
+                                }
+                            };
+                            reply.AttachmentLayout = AttachmentLayoutTypes.List;
+                            reply.Attachments.Add(new ThumbnailCard
+                            {
+                                Title = "Click para ver las Paradas Cercanas",
+                                Buttons = actions,
+                                Tap = actions[0],
+                                Text = "",
+                                Subtitle = "Ver mapa con las paradas cercanas obtenidas",
+                                Images = new List<CardImage>
+                                {
+                                    new CardImage("http://map.quenosepase.com.ar/logo.png")
+                                }
+                            }.ToAttachment()
+                                );
+                            //,
+                            //    new HeroCard
+                            //    {
+                            //        Title = "Click para ver las Paradas Cercanas",
+                            //        Images = new List<CardImage>(),
+                            //        Buttons = actions
+                            //    }.ToAttachment()
+                            //);
+                        }
+                        else
+                        {
+                            reply = activity.CreateReply(newMsg);
+                        }
+                    }
+
+                    await connector.Conversations.ReplyToActivityAsync(reply);
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.LogAsync(ex, "MessagesController_BotHelper", (activity != null ? activity.Text : ""), (activity != null ? activity.From.Name : ""));
+                }
             }
             else
             {
