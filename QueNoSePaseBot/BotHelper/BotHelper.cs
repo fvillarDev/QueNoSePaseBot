@@ -20,61 +20,20 @@ namespace QueNoSePaseBot.BotHelper
             {
                 var msg = message.Text;
                 var msgLower = msg.ToLower();
-                if (msg.Trim().ToLower().Equals("hola"))
-                    return "Buen día, " + message.From.Name;
 
-                if (msg.Trim().ToLower().Equals("ayuda") || msg.Trim().ToLower().Equals("opciones") || msg.Trim().ToLower().Equals("opcion"))
+                if (msg.Trim().ToLower().StartsWith("hola"))
+                    return string.Format(GetSaludoRandom(),message.From.Name);
+
+                if (msg.Trim().ToLower().StartsWith("gracias"))
+                    return string.Format(GetGraciasRandom(), message.From.Name);
+
+                if (msg.Trim().ToLower().Equals("/start"))
                 {
-                    StringBuilder sb = new StringBuilder();
-                    //sb.AppendLine(
-                        //"Envía: [Número de Parada] [espacio] [Número de Línea] para conocer el arribo por línea.");
-                    //sb.AppendLine("");
-                    sb.AppendLine(
-                        "Envía: [Número de Parada] [espacio] todos para conocer el arribo de todas las líneas en esa parada.");
-                    sb.AppendLine("");
-                    sb.AppendLine("Ejemplo:");
-                    sb.AppendLine("  C1324");
-                    return sb.ToString();
-                }
-
-                if (msgLower.StartsWith("parada") || msgLower.StartsWith("cercana"))
-                {
-                    var splitted = msgLower.Split(':');
-                    if (splitted.Length > 1)
-                    {
-                        string posicion = splitted[1].TrimStart().TrimEnd().Trim();
-                        var pos = posicion.Split(',');
-                        var parameters = new NameValueCollection
-                           {
-                               { "funcion", "paradasCercanas" },
-                               { "userId", Constants.USER_ID },
-                               { "uWeb", Constants.USUARIO },
-                               { "cWeb", Constants.CLAVE },
-                               { "latitud", pos[0].Replace(".", ",") },
-                               { "longitud", pos[1].Replace(".", ",") }
-                           };
-                        var res = Helper.HttpPost(parameters);
-                        var paradas = Helper.ParseParadasCercanasAspx(res);
-
-                        int index = 0;
-                        StringBuilder sb = new StringBuilder();
-                        string baseurl = "http://map.quenosepase.com.ar?user=" + pos[0] + ";" + pos[1] + (paradas.Count > 0 ? "&paradas=" : "");
-                        foreach (ParadaCercana cercana in paradas)
-                        {
-                            if (cercana.Parada == null) continue;
-
-                            var data = index + ",Lineas " + string.Join("-", cercana.Lineas) + "," +
-                                      cercana.Parada.NumeroParada + "," + cercana.Parada.Latitud.Replace(",", ".") + ";" + cercana.Parada.Longitud.Replace(",", ".");
-                            sb.Append(data + "|");
-                            index++;
-                        }
-                        return baseurl + sb.ToString();
-                        //return "[Ver Paradas Cercanas](" + url + ")";
-                    }
-                }
+                    return "Gracias por utilizar el servicio. Envía el número de parada y te devolveré los horarios de llegada!";
+                }                    
 
                 // buscar parada
-                if (msgLower.StartsWith("c"))
+                if (msgLower.StartsWith("c") && msgLower.Substring(0, 1).Equals("c"))
                 {
                     var splitted = msgLower.Split(' ');
                     //si comienza con c y nada mas, asume busqueda por todos
@@ -86,7 +45,7 @@ namespace QueNoSePaseBot.BotHelper
                             return list;
                         }
 
-                        return "Error";
+                        return GetNoMsgRandom();
                     }
                     if (splitted.Length > 1)
                     {
@@ -101,20 +60,83 @@ namespace QueNoSePaseBot.BotHelper
                                 return list;
                             }
 
-                            return "Error";
+                            return GetNoMsgRandom();
                         }
 
                         return "Pronto implementaremos más funciones. Disculpe las molestias.";
                     }
-                    return "Disculpe, faltan datos para poder realizar su consulta.";
+                    return GetNoMsgRandom();
                 }
-                return "Disculpe, no hemos podido procesar su consulta. Verifique que los datos sean correctos";
+
+                if (msg.Trim().ToLower().Equals("ayuda") || msg.Trim().ToLower().Equals("opciones") || msg.Trim().ToLower().Equals("opcion"))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine(
+                        "Envía: **Número de Parada** para conocer el arribo de todas las líneas en esa parada.");
+                    sb.AppendLine("");
+                    sb.AppendLine("Ejemplo:");
+                    sb.AppendLine("  C1324");
+                    return sb.ToString();
+                }
+
+                //if (msgLower.StartsWith("parada") || msgLower.StartsWith("cercana"))
+                //{
+                //    var splitted = msgLower.Split(':');
+                //    if (splitted.Length > 1)
+                //    {
+                //        string posicion = splitted[1].TrimStart().TrimEnd().Trim();
+                //        var pos = posicion.Split(',');
+                //        var parameters = new NameValueCollection
+                //           {
+                //               { "funcion", "paradasCercanas" },
+                //               { "userId", Constants.USER_ID },
+                //               { "uWeb", Constants.USUARIO },
+                //               { "cWeb", Constants.CLAVE },
+                //               { "latitud", pos[0].Replace(".", ",") },
+                //               { "longitud", pos[1].Replace(".", ",") }
+                //           };
+                //        var res = Helper.HttpPost(parameters);
+                //        var paradas = Helper.ParseParadasCercanasAspx(res);
+
+                //        int index = 0;
+                //        StringBuilder sb = new StringBuilder();
+                //        string baseurl = "http://map.quenosepase.com.ar?user=" + pos[0] + ";" + pos[1] + (paradas.Count > 0 ? "&paradas=" : "");
+                //        foreach (ParadaCercana cercana in paradas)
+                //        {
+                //            if (cercana.Parada == null) continue;
+
+                //            var data = index + ",Lineas " + string.Join("-", cercana.Lineas) + "," +
+                //                      cercana.Parada.NumeroParada + "," + cercana.Parada.Latitud.Replace(",", ".") + ";" + cercana.Parada.Longitud.Replace(",", ".");
+                //            sb.Append(data + "|");
+                //            index++;
+                //        }
+                //        return baseurl + sb.ToString();
+                //        //return "[Ver Paradas Cercanas](" + url + ")";
+                //    }
+                //}
+                
+                return GetNoMsgRandom();
             }
             catch (Exception ex)
             {
                 LogHelper.LogAsync(ex, "MessagesController_BotHelper", (message != null ? message.Text : ""), (message != null ? message.From.Name : ""));
-                return "Disculpe, no hemos podido procesar la consulta. Verifique que los datos sean correctos";
+                return GetNoMsgRandom();
             }
+        }
+
+        private static string GetSaludoRandom()
+        {
+            return Models.Constants.SALUDOS[new Random().Next(0, Models.Constants.SALUDOS.Count)];
+        }
+
+        private static string GetGraciasRandom()
+        {
+            return Models.Constants.GRACIAS[new Random().Next(0, Models.Constants.SALUDOS.Count)];
+        }
+
+        private static string GetNoMsgRandom()
+        {
+            return Models.Constants.NO_MSG[new Random().Next(0, Models.Constants.SALUDOS.Count)];
         }
     }
 

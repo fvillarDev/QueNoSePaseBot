@@ -27,9 +27,14 @@ namespace QueNoSePaseBot
                 try
                 {
                     ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
+
+                    Activity isTyping = activity.CreateReply();
+                    isTyping.Type = ActivityTypes.Typing;
+                    await connector.Conversations.ReplyToActivityAsync(isTyping);
+
                     Activity reply =
                         activity.CreateReply(
-                            "Disculpe, no hemos podido procesar su consulta. Verifique que los datos sean correctos");
+                            GetNoMsgRandom());
                     int state = 0;
 
                     if (activity.Attachments != null && activity.Attachments.Count > 0)
@@ -50,7 +55,7 @@ namespace QueNoSePaseBot
                         //{
 
                         //});
-                        reply = activity.CreateReply("Ups.. Mensaje vacío!");
+                        reply = activity.CreateReply("Ups.. Mensaje vacío!\nPrueba mandando el número de parada");
                         state = 2;
                     }
 
@@ -145,6 +150,11 @@ namespace QueNoSePaseBot
             }
 
             return null;
+        }
+
+        private string GetNoMsgRandom()
+        {
+            return Models.Constants.NO_MSG[new Random().Next(0, Models.Constants.SALUDOS.Count)];
         }
     }
 }

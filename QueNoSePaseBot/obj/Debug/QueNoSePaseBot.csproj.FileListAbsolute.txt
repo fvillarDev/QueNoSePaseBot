@@ -37,3 +37,43 @@ D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\zh-hans\Mi
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.dll
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.pdb
 D:\FACU\Proyectos\QueNoSePaseBot\v3\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePase.API.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePaseBot.dll.config
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePaseBot.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePaseBot.pdb
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Autofac.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Chronic.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.Bot.Builder.Autofac.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.Bot.Builder.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.Bot.Connector.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.Rest.ClientRuntime.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.WindowsAzure.Configuration.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Newtonsoft.Json.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePase.API.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.Net.Http.Formatting.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.Web.Http.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.Web.Http.WebHost.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Autofac.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.Bot.Builder.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.Bot.Builder.Autofac.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.Bot.Connector.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Microsoft.WindowsAzure.Configuration.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\Newtonsoft.Json.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.Net.Http.Formatting.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.Web.Http.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.Web.Http.WebHost.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\ar\Microsoft.Bot.Builder.resources.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\cs\Microsoft.Bot.Builder.resources.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\de-dE\Microsoft.Bot.Builder.resources.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\en\Microsoft.Bot.Builder.resources.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\es\Microsoft.Bot.Builder.resources.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\fa\Microsoft.Bot.Builder.resources.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\fr\Microsoft.Bot.Builder.resources.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\ja\Microsoft.Bot.Builder.resources.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\ru\Microsoft.Bot.Builder.resources.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.dll
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.pdb
