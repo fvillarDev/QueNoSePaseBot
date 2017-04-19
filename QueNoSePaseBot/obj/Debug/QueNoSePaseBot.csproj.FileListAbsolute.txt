@@ -77,11 +77,4 @@ D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\ru\Microsoft.Bot.Bu
 D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
 D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.dll
 D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.pdb
-D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\log4net.dll
-D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.Web.Http.Cors.dll
-D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.Web.Cors.dll
-D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePase.API.pdb
-D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePase.API.dll.config
-D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\log4net.xml
-D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.Web.Http.Cors.xml
 D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.csprojResolveAssemblyReference.cache
