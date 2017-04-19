@@ -10,12 +10,19 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
 using QueNoSePaseBot.BotHelper;
+using QueNoSePase.API.Controllers;
 
 namespace QueNoSePaseBot
 {
     [BotAuthentication]
     public class MessagesController : ApiController
     {
+        private HorariosController _horariosController;
+        public MessagesController()
+        {
+            _horariosController = new HorariosController();
+        }
+
         /// <summary>
         /// POST: api/Messages
         /// Receive a message from a user and reply to it
@@ -61,7 +68,7 @@ namespace QueNoSePaseBot
 
                     if (state == 0)
                     {
-                        var newMsg = BotHelper.BotHelper.ParseMessage(activity);
+                        var newMsg = BotHelper.BotHelper.ParseMessage(activity, _horariosController);
                         if (newMsg.StartsWith("http:"))
                         {
                             reply = activity.CreateReply();

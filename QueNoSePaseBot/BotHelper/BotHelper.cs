@@ -9,12 +9,14 @@ using System.Web;
 using Microsoft.Bot.Connector;
 using QueNoSePase.API;
 using QueNoSePase.API.Models;
+using QueNoSePase.API.Controllers;
+using Newtonsoft.Json;
 
 namespace QueNoSePaseBot.BotHelper
 {
     internal class BotHelper
     {
-        public static string ParseMessage(Activity message)
+        public static string ParseMessage(Activity message, HorariosController horariosController)
         {
             try
             {
@@ -39,31 +41,52 @@ namespace QueNoSePaseBot.BotHelper
                     //si comienza con c y nada mas, asume busqueda por todos
                     if (splitted.Length == 1)
                     {
-                        var list = HttpHelper.GetHorarioTodos(splitted[0]);
-                        if (list != null)
-                        {
-                            return list;
-                        }
+                        return "Envía: **Número de Parada** **Linea** para conocer el arribo esa línea en esa parada.";
+                        //var list = HttpHelper.GetHorarioTodos(splitted[0]);
+                        //if (list != null)
+                        //{
+                        //    return list;
+                        //}
 
-                        return GetNoMsgRandom();
+                        //return GetNoMsgRandom();
                     }
                     if (splitted.Length > 1)
                     {
                         var parada = splitted[0];
                         var linea = splitted[1];
+                        
+                        var jsonH = horariosController.Get(parada, linea);
+                        var horarios = JsonConvert.DeserializeObject<List<QueNoSePase.API.Models.Horario>>(jsonH);
 
-                        if (linea.ToLower().Equals("todos") || linea.ToLower().Equals("todas"))
+                        StringBuilder sb = new StringBuilder();
+                        sb.AppendLine("Parada: " + parada.ToUpper() + " - Todos - ");
+                        sb.AppendLine(Environment.NewLine);
+
+                        foreach (var item in horarios)
                         {
-                            var list = HttpHelper.GetHorarioTodos(parada);
-                            if (list != null)
-                            {
-                                return list;
-                            }
-
-                            return GetNoMsgRandom();
+                            Horario horario = new Horario();
+                            horario.Linea = item.Linea;
+                            horario.Barrio = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(item.Direccion.ToLower());
+                            horario.Llegando = item.Llegando;
+                            horario.Minutos = item.Minutos;
+                            sb.AppendLine(horario.ToString());
+                            sb.AppendLine(Environment.NewLine);
                         }
 
-                        return "Pronto implementaremos más funciones. Disculpe las molestias.";
+                        return sb.ToString();
+
+                        //if (linea.ToLower().Equals("todos") || linea.ToLower().Equals("todas"))
+                        //{
+                        //    var list = HttpHelper.GetHorarioTodos(parada);
+                        //    if (list != null)
+                        //    {
+                        //        return list;
+                        //    }
+
+                        //    return GetNoMsgRandom();
+                        //}
+
+                        //return "Pronto implementaremos más funciones. Disculpe las molestias.";
                     }
                     return GetNoMsgRandom();
                 }
@@ -72,10 +95,10 @@ namespace QueNoSePaseBot.BotHelper
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.AppendLine(
-                        "Envía: **Número de Parada** para conocer el arribo de todas las líneas en esa parada.");
+                        "Envía: **Número de Parada** **Linea** para conocer el arribo esa línea en esa parada.");
                     sb.AppendLine("");
                     sb.AppendLine("Ejemplo:");
-                    sb.AppendLine("  C1324");
+                    sb.AppendLine("  C1324 10");
                     return sb.ToString();
                 }
 
