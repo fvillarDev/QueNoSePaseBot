@@ -84,3 +84,4 @@ D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePase.API.pdb
 D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePase.API.dll.config
 D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\log4net.xml
 D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\System.Web.Http.Cors.xml
+D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.csprojResolveAssemblyReference.cache
