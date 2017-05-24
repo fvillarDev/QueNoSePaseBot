@@ -33,6 +33,9 @@ namespace QueNoSePaseBot
             {
                 try
                 {
+                    if(activity.ChannelData != null)
+                        LogHelper.LogAsync(JsonConvert.SerializeObject(activity.ChannelData), "MessagesController_Post", "location", "fvillar");
+
                     ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
 
                     Activity isTyping = activity.CreateReply();
@@ -49,10 +52,10 @@ namespace QueNoSePaseBot
                         reply = activity.CreateReply("Disculpe, sólo se aceptan mensajes de texto");
                         state = 1;
                     }
-
+                    
                     if (state == 0 && activity.Entities.Count > 0)
                     {
-                        LogHelper.LogAsync(JsonConvert.SerializeObject(activity.Entities), "MessagesController_Post", (activity != null ? activity.Text : ""), (activity != null ? activity.From.Name : ""));
+                        LogHelper.LogAsync(JsonConvert.SerializeObject(activity.Entities), "MessagesController_Post", "location", "fvillar");
                         //location ??                        
                         var location = activity.Entities.Where(t => t.Type == "Place").Select(t => t.GetAs<Place>()).FirstOrDefault();
                         if (location != null)
