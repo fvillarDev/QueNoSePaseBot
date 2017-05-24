@@ -55,13 +55,13 @@ namespace QueNoSePaseBot.BotHelper
                     scope.Complete();
                 }
             }
-            catch (SqlException ex)
-            {
-                //LogHelper.Log(ex);
-            }
+            //catch (SqlException ex)
+            //{
+                
+            //}
             catch (Exception ex)
             {
-                
+                LogHelper.LogAsync(ex);
             }
         }
     }

@@ -33,8 +33,6 @@ namespace QueNoSePaseBot
             {
                 try
                 {
-                    LogHelper.LogAsync(JsonConvert.SerializeObject(activity), "MessagesController_Post", (activity != null ? activity.Text : ""), (activity != null ? activity.From.Name : ""));
-
                     ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
 
                     Activity isTyping = activity.CreateReply();
@@ -52,6 +50,22 @@ namespace QueNoSePaseBot
                         state = 1;
                     }
 
+                    if (state == 0 && activity.Entities.Count > 0)
+                    {
+                        LogHelper.LogAsync(JsonConvert.SerializeObject(activity.Entities), "MessagesController_Post", (activity != null ? activity.Text : ""), (activity != null ? activity.From.Name : ""));
+                        //location ??                        
+                        var location = activity.Entities.Where(t => t.Type == "Place").Select(t => t.GetAs<Place>()).FirstOrDefault();
+                        if (location != null)
+                        {
+                            reply = activity.CreateReply(location.Geo);
+                        }
+                        else
+                        {
+                            reply = activity.CreateReply(activity.Entities.Count.ToString());
+                        }
+                        state = 2;
+                    }
+
                     if (string.IsNullOrEmpty(activity.Text) && state == 0)
                     {
                         //CardAction action = new CardAction
@@ -66,13 +80,7 @@ namespace QueNoSePaseBot
                         //});
                         reply = activity.CreateReply("Ups.. Mensaje vacío!\nPrueba mandando el número de parada");
                         state = 2;
-                    }
-
-                    if(state == 0 && activity.Entities.Count > 0)
-                    {
-                        //location ??
-                        //var location = activity.Entities?.Where(t => t.Type == "Place").Select(t => t.GetAs<Place>()).FirstOrDefault();
-                    }
+                    }                    
 
                     if (state == 0)
                     {
