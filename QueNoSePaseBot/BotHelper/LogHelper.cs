@@ -28,6 +28,26 @@ namespace QueNoSePaseBot.BotHelper
             t.Start(data);
         }
 
+        public static void LogAsync(string msg, string controller = "", string request = "", string user = "")
+        {
+            var data = new LogData
+            {
+                ControllerName = controller,
+                ErrorMessage = msg,
+                Request = request,
+                UserName = user
+            };
+            Thread t = new Thread(delegate (object o)
+            {
+                if (o is LogData)
+                {
+                    var d = (LogData)o;
+                    DataHelper.ExecuteNonQuery("ErrorsLog_Insert", d.ControllerName, d.ErrorMessage, d.Request, d.UserName);
+                }
+            });
+            t.Start(data);
+        }
+
         private class LogData
         {
             public string ErrorMessage { get; set; }
