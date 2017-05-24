@@ -71,7 +71,7 @@ namespace QueNoSePaseBot
                     if(state == 0 && activity.Entities.Count > 0)
                     {
                         //location ??
-                        var location = activity.Entities?.Where(t => t.Type == "Place").Select(t => t.GetAs<Place>()).FirstOrDefault();
+                        //var location = activity.Entities?.Where(t => t.Type == "Place").Select(t => t.GetAs<Place>()).FirstOrDefault();
                     }
 
                     if (state == 0)
