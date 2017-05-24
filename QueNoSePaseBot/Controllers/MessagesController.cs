@@ -11,6 +11,7 @@ using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
 using QueNoSePaseBot.BotHelper;
 using QueNoSePase.API.Controllers;
+using log4net;
 
 namespace QueNoSePaseBot
 {
@@ -23,6 +24,8 @@ namespace QueNoSePaseBot
             _horariosController = new HorariosController();
         }
 
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// POST: api/Messages
         /// Receive a message from a user and reply to it
@@ -33,6 +36,8 @@ namespace QueNoSePaseBot
             {
                 try
                 {
+                    Log.InfoFormat("Activity", JsonConvert.SerializeObject(activity));
+
                     ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
 
                     Activity isTyping = activity.CreateReply();
@@ -64,6 +69,12 @@ namespace QueNoSePaseBot
                         //});
                         reply = activity.CreateReply("Ups.. Mensaje vacío!\nPrueba mandando el número de parada");
                         state = 2;
+                    }
+
+                    if(state == 0 && activity.Entities.Count > 0)
+                    {
+                        //location ??
+                        var location = activity.Entities?.Where(t => t.Type == "Place").Select(t => t.GetAs<Place>()).FirstOrDefault();
                     }
 
                     if (state == 0)

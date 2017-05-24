@@ -79,5 +79,4 @@ D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBo
 D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.pdb
 D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\log4net.dll
 D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\log4net.xml
-D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\obj\Debug\QueNoSePaseBot.csprojResolveAssemblyReference.cache
 D:\FACU\Visual Studio 2017\QueNoSePaseBot\QueNoSePaseBot\bin\QueNoSePase.API.pdb
