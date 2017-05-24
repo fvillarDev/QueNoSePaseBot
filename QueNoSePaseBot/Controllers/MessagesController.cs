@@ -34,7 +34,7 @@ namespace QueNoSePaseBot
                 try
                 {
                     if(activity.ChannelData != null)
-                        LogHelper.LogAsync(JsonConvert.SerializeObject(activity.ChannelData), "MessagesController_Post", "location", "fvillar");
+                        LogHelper.LogAsync(JsonConvert.SerializeObject(activity.ChannelData), "MessagesController_Post", "ChannelData", "fvillar");
 
                     ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
 
@@ -55,12 +55,12 @@ namespace QueNoSePaseBot
                     
                     if (state == 0 && activity.Entities.Count > 0)
                     {
-                        LogHelper.LogAsync(JsonConvert.SerializeObject(activity.Entities), "MessagesController_Post", "location", "fvillar");
+                        LogHelper.LogAsync(JsonConvert.SerializeObject(activity.Entities), "MessagesController_Post", "Entities", "fvillar");
                         //location ??                        
                         var location = activity.Entities.Where(t => t.Type == "Place").Select(t => t.GetAs<Place>()).FirstOrDefault();
                         if (location != null)
                         {
-                            reply = activity.CreateReply(location.Geo);
+                            reply = activity.CreateReply("Latitude: " + ((GeoCoordinates)location.Geo).Latitude + ", Longitude: " + ((GeoCoordinates)location.Geo).Longitude);
                         }
                         else
                         {
