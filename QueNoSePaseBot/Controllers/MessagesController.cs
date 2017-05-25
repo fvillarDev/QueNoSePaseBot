@@ -11,6 +11,7 @@ using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
 using QueNoSePaseBot.BotHelper;
 using QueNoSePase.API.Controllers;
+using QueNoSePaseBot.Models;
 
 namespace QueNoSePaseBot
 {
@@ -53,14 +54,15 @@ namespace QueNoSePaseBot
                         state = 1;
                     }
                     
-                    if (state == 0 && activity.Entities.Count > 0)
+                    if (state == 0 && activity.Entities.Count > 0 && activity.ChannelData != null)
                     {
                         LogHelper.LogAsync(JsonConvert.SerializeObject(activity.Entities), "MessagesController_Post", "Entities", "fvillar");
-                        //location ??                        
-                        var location = activity.Entities.Where(t => t.Type == "Place").Select(t => t.GetAs<Place>()).FirstOrDefault();
-                        if (location != null)
+
+                        var d = JsonConvert.DeserializeObject<TelegramChannelData>(activity.ChannelData.ToString());
+
+                        if (d != null)
                         {
-                            reply = activity.CreateReply("Latitude: " + ((GeoCoordinates)location.Geo).Latitude + ", Longitude: " + ((GeoCoordinates)location.Geo).Longitude);
+                            reply = activity.CreateReply("Latitude: " + d.message.location.latitude + ", Longitude: " + d.message.location.longitude);
                         }
                         else
                         {
