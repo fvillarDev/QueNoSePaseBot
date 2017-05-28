@@ -19,9 +19,11 @@ namespace QueNoSePaseBot
     public class MessagesController : ApiController
     {
         private HorariosController _horariosController;
+        private ParadasCercanasController _paradasCercanasController;
         public MessagesController()
         {
             _horariosController = new HorariosController();
+            _paradasCercanasController = new ParadasCercanasController();
         }
 
         /// <summary>
@@ -34,8 +36,8 @@ namespace QueNoSePaseBot
             {
                 try
                 {
-                    if(activity.ChannelData != null)
-                        LogHelper.LogAsync(JsonConvert.SerializeObject(activity.ChannelData), "MessagesController_Post", "ChannelData", "fvillar");
+                    //if(activity.ChannelData != null)
+                        //LogHelper.LogAsync(JsonConvert.SerializeObject(activity.ChannelData), "MessagesController_Post", "ChannelData", "fvillar");
 
                     ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
 
@@ -56,17 +58,22 @@ namespace QueNoSePaseBot
                     
                     if (state == 0 && activity.Entities.Count > 0 && activity.ChannelData != null)
                     {
-                        LogHelper.LogAsync(JsonConvert.SerializeObject(activity.Entities), "MessagesController_Post", "Entities", "fvillar");
+                        //LogHelper.LogAsync(JsonConvert.SerializeObject(activity.Entities), "MessagesController_Post", "Entities", "fvillar");
 
                         var d = JsonConvert.DeserializeObject<TelegramChannelData>(activity.ChannelData.ToString());
 
                         if (d != null)
                         {
-                            reply = activity.CreateReply("Latitude: " + d.message.location.latitude + ", Longitude: " + d.message.location.longitude);
+                            string loc = d.message.location.latitude.ToString().Replace(".", ",");
+                            loc += ";";
+                            loc += d.message.location.longitude.ToString().Replace(".", ",");
+                            string msg = BotHelper.BotHelper.ParseLocation(loc, _paradasCercanasController);
+                            //reply = activity.CreateReply("Latitude: " + d.message.location.latitude + ", Longitude: " + d.message.location.longitude);
+                            reply = activity.CreateReply(msg);
                         }
                         else
                         {
-                            reply = activity.CreateReply(activity.Entities.Count.ToString());
+                            reply = activity.CreateReply("Disculpe, no he podido procesar su consulta. Intenta nuevamente más tarde");
                         }
                         state = 2;
                     }
@@ -90,46 +97,7 @@ namespace QueNoSePaseBot
                     if (state == 0)
                     {
                         var newMsg = BotHelper.BotHelper.ParseMessage(activity, _horariosController);
-                        if (newMsg.StartsWith("http:"))
-                        {
-                            reply = activity.CreateReply();
-                            reply.Attachments = new List<Attachment>();
-                            var actions = new List<CardAction>
-                            {
-                                new CardAction
-                                {
-                                    Title = "Ver Paradas Cercanas",
-                                    Value = newMsg,
-                                    Type = ActionTypes.OpenUrl
-                                }
-                            };
-                            reply.AttachmentLayout = AttachmentLayoutTypes.List;
-                            reply.Attachments.Add(new ThumbnailCard
-                            {
-                                Title = "Click para ver las Paradas Cercanas",
-                                Buttons = actions,
-                                Tap = actions[0],
-                                Text = "",
-                                Subtitle = "Ver mapa con las paradas cercanas obtenidas",
-                                Images = new List<CardImage>
-                                {
-                                    new CardImage("http://map.quenosepase.com.ar/logo.png")
-                                }
-                            }.ToAttachment()
-                                );
-                            //,
-                            //    new HeroCard
-                            //    {
-                            //        Title = "Click para ver las Paradas Cercanas",
-                            //        Images = new List<CardImage>(),
-                            //        Buttons = actions
-                            //    }.ToAttachment()
-                            //);
-                        }
-                        else
-                        {
-                            reply = activity.CreateReply(newMsg);
-                        }
+                        reply = activity.CreateReply(newMsg);
                     }
 
                     await connector.Conversations.ReplyToActivityAsync(reply);

@@ -140,6 +140,32 @@ namespace QueNoSePaseBot.BotHelper
             }
         }
 
+        public static string ParseLocation(string location, ParadasCercanasController controller)
+        {
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+                string aux = controller.Get(location);
+                var list = JsonConvert.DeserializeObject<List<ParadaCercana>>(aux);
+                if(list != null && list.Count > 0)
+                {
+                    foreach (var item in list)
+                    {
+                        sb.AppendFormat("Parada **{0}**:  ({1} - {2})", item.Parada.NumeroParada, item.Calles, item.Direccion);
+                        sb.AppendLine("");
+                        sb.AppendLine("");
+                    }
+                }
+
+                return sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogAsync(ex, "MessagesController_BotHelper", location, "");
+                return GetNoMsgRandom();
+            }
+        }
+
         private static string GetSaludoRandom()
         {
             return Models.Constants.SALUDOS[new Random().Next(0, Models.Constants.SALUDOS.Count)];
